@@ -1,4 +1,4 @@
-package retina.applicatiton.transformer;
+package retina.application.transformer;
 
 import retina.application.dto.BaseDto;
 

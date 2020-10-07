@@ -1,4 +1,4 @@
-package retina.applicatiton.transformer;
+package retina.application.transformer;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

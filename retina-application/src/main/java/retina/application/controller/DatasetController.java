@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import retina.application.dto.DatasetDto;
 import retina.application.entities.Dataset;
 import retina.application.service.DatasetService;
-import retina.applicatiton.transformer.DatasetTransfmorer;
+import retina.application.transformer.DatasetTransfmorer;
 
 @RestController
 @RequestMapping("/dataset")
