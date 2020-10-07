@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import retina.application.entities.Dataset;
 import retina.application.repository.DatasetRepository;
 
 @Service
@@ -25,6 +26,10 @@ public class DatasetService {
 
 	public boolean existsById(Long id) {
 		return datasetRepository.existsById(id);
+	}
+
+	public Dataset saveDataset(Dataset entity) {
+		return datasetRepository.save(entity);
 	}
 
 }

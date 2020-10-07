@@ -1,26 +1,17 @@
 package retina.application.entities;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-public class Dataset implements Serializable {
+public class Dataset extends BaseEntity {
 
 	private static final long serialVersionUID = 1977346271603211229L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", nullable = false)
-	protected Long id;
 
 	@Column(name = "CMPLNT_NUM", length = 64)
 	@Length(min = 0, max = 64)
@@ -109,14 +100,6 @@ public class Dataset implements Serializable {
 	@Column(name = "Longitude", length = 64)
 	@Length(min = 0, max = 64)
 	private double longitude;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getCmplnt_num() {
 		return cmplnt_num;
