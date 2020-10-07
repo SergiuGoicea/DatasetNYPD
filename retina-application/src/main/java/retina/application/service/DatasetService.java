@@ -18,4 +18,13 @@ public class DatasetService {
 		return datasetRepository.count();
 	}
 
+	public void deleteDataset(Long id) {
+		datasetRepository.deleteById(id);
+		
+	}
+
+	public boolean existsById(Long id) {
+		return datasetRepository.existsById(id);
+	}
+
 }
