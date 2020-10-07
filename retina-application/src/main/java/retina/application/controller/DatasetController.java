@@ -6,10 +6,11 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -34,34 +35,28 @@ public class DatasetController {
 	public Long getDatasetTotal() {
 		return datasetService.totalEvents();
 	}
-//	  @GetMapping("/stats/total")
-//	  Dataset one(@PathVariable Long id) {
-//
-//	    return datasetRepository.findById(id)
-//	      .orElseThrow(() -> new DatasetNotFoundException(id));
-//	  }
-	
+
 	@GetMapping(value = "stats/offenses", produces = MediaType.APPLICATION_PROBLEM_JSON_VALUE)
-	public List<Dataset> getDatasetInOrder()
-	{
-		
+	public List<Dataset> getDatasetInOrder() {
+
 		return datasetService.findDataset().stream().collect(Collectors.toList());
+		
 	}
 
-	@PutMapping(value = "/dataset/stats/offenses", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/dataset/stats/offenses", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Dataset postDataset(@RequestBody DatasetDto newDataset) {
+	public DatasetDto postDataset(@Validated @RequestBody DatasetDto newDataset) {
 
-		return datasetService.saveDataset(datasetTransformer.toEntity(newDataset));
+		return datasetTransformer.toDto(datasetService.saveDataset(datasetTransformer.toEntity(newDataset)));
 //		return datasetService.saveDataset(newDataset);
 	}
 
 	@DeleteMapping("/dataset/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteDataset(@PathVariable Long id) {
-		if (datasetService.existsById(id))
-			
+		if (datasetService.existsById(id)) {
 			datasetService.deleteDataset(id);
+		}
 
 	}
 }

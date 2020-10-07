@@ -3,28 +3,23 @@ package retina.application.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import retina.application.entities.Dataset;
-import retina.application.repository.DatasetRepository;
+import retina.application.dto.DatasetDto;
 
 @Component
-public class DatasetValidator implements ConstraintValidator<DatasetValidation, Dataset> {
-
-	@Autowired
-	private DatasetRepository datasetRepository;
+public class DatasetValidator implements ConstraintValidator<DatasetValidation, DatasetDto> {
 
 	@Override
-	public boolean isValid(Dataset value, ConstraintValidatorContext context) {
-		boolean isValid = !datasetRepository.existsById(value.getId());
+	public boolean isValid(DatasetDto value, ConstraintValidatorContext context) {
+		boolean isValid = true;
 
-		if (!isValid) {
-			context.buildConstraintViolationWithTemplate(String.format("The id=%s does not exist.", value.getId()))
-					.addPropertyNode("id").addConstraintViolation();
+		int ky_cd = value.getKy_cd();
+		if (ky_cd > 999) {
+			context.buildConstraintViolationWithTemplate(String.format("The number is invalid."))
+					.addConstraintViolation();
 			return false;
 		}
-
 		return isValid;
 	}
 
