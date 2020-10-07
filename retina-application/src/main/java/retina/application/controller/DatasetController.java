@@ -1,5 +1,8 @@
 package retina.application.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -37,6 +40,13 @@ public class DatasetController {
 //	    return datasetRepository.findById(id)
 //	      .orElseThrow(() -> new DatasetNotFoundException(id));
 //	  }
+	
+	@GetMapping(value = "stats/offenses", produces = MediaType.APPLICATION_PROBLEM_JSON_VALUE)
+	public List<Dataset> getDatasetInOrder()
+	{
+		
+		return datasetService.findDataset().stream().collect(Collectors.toList());
+	}
 
 	@PutMapping(value = "/dataset/stats/offenses", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
