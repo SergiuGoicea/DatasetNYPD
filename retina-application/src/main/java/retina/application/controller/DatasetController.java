@@ -53,10 +53,13 @@ public class DatasetController {
 
 	@DeleteMapping("/delete/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteDataset(@PathVariable Long id) {
+	public boolean deleteDataset(@PathVariable Long id) {
 		if (datasetService.existsById(id)) {
 			datasetService.deleteDataset(id);
+			return true;
 		}
+		else
+		return false;
 
 	}
 }
