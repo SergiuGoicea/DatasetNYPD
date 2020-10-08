@@ -39,7 +39,7 @@ public class DatasetController {
 	@GetMapping(value = "stats/offenses", produces = MediaType.APPLICATION_PROBLEM_JSON_VALUE)
 	public List<Dataset> getDatasetInOrder() {
 
-		return datasetService.findDataset().stream().collect(Collectors.toList());
+		return datasetService.findDataset().stream().sorted().collect(Collectors.toList());
 		
 	}
 
