@@ -43,7 +43,7 @@ public class DatasetController {
 		
 	}
 
-	@PostMapping(value = "/dataset/stats/offenses", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/post", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public DatasetDto postDataset(@Validated @RequestBody DatasetDto newDataset) {
 
@@ -51,7 +51,7 @@ public class DatasetController {
 //		return datasetService.saveDataset(newDataset);
 	}
 
-	@DeleteMapping("/dataset/{id}")
+	@DeleteMapping("/delete/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteDataset(@PathVariable Long id) {
 		if (datasetService.existsById(id)) {
