@@ -1,6 +1,10 @@
 package retina.application.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,33 +37,30 @@ public class DatasetController {
 
 	@GetMapping(value = "/stats/total", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Long getDatasetTotal() {
+
 		return datasetService.totalEvents();
 	}
 
 	@GetMapping(value = "/stats/offenses", produces = MediaType.APPLICATION_PROBLEM_JSON_VALUE)
 	public List<Dataset> getDatasetInOrder() {
 
-		return datasetService.findDataset().stream().sorted().collect(Collectors.toList());
-		
+		return datasetService.findDataset().stream().collect(Collectors.toList());
 	}
 
 	@PostMapping(value = "/post", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public DatasetDto postDataset(@Validated @RequestBody DatasetDto newDataset) {
+	public DatasetDto postDataset(@RequestBody DatasetDto newDataset) {
 
 		return datasetTransformer.toDto(datasetService.saveDataset(datasetTransformer.toEntity(newDataset)));
-//		return datasetService.saveDataset(newDataset);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public boolean deleteDataset(@PathVariable Long id) {
 		if (datasetService.existsById(id)) {
 			datasetService.deleteDataset(id);
 			return true;
-		}
-		else
-		return false;
+		} else
+			return false;
 
 	}
 }

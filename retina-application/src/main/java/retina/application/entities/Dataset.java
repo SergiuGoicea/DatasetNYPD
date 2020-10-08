@@ -14,91 +14,70 @@ public class Dataset extends BaseEntity {
 	private static final long serialVersionUID = 1977346271603211229L;
 
 	@Column(name = "CMPLNT_NUM", length = 64)
-	@Length(min = 0, max = 64)
 	private String cmplnt_num;
 
 	@Column(name = "CMPLNT_FR_DT", length = 64)
-	@Length(min = 0, max = 64)
 	private LocalDate cmplnt_fr_dt;
 
 	@Column(name = "CMPLNT_FR_TM", length = 64)
-	@Length(min = 0, max = 64)
 	private LocalTime cmplnt_fr_tm;
 
 	@Column(name = "CMPLNT_TO_DT", length = 64)
-	@Length(min = 0, max = 64)
 	private LocalDate cmplnt_to_dt;
 
 	@Column(name = "CMPLNT_TO_TM", length = 64)
-	@Length(min = 0, max = 64)
 	private LocalTime cmplnt_to_tm;
 
 	@Column(name = "RPT_DT", length = 64)
-	@Length(min = 0, max = 64)
 	private LocalDate rpt_dt;
 
 	@Column(name = "KY_CD", length = 64)
-	@Length(min = 0, max = 64)
 	private int ky_cd;
 
 	@Column(name = "OFNS_DESC", length = 64)
-	@Length(min = 0, max = 64)
 	private String ofns_desc;
 
 	@Column(name = "PD_CD", length = 64)
-	@Length(min = 0, max = 64)
 	private int pd_cd;
 
 	@Column(name = "PD_DESC", length = 64)
-	@Length(min = 0, max = 64)
 	private String pd_desc;
 
 	@Column(name = "CRM_ATPT_CPTD_CD", length = 64)
-	@Length(min = 0, max = 64)
 	private String crm_atpt_cptd_cd;
 
 	@Column(name = "LAW_CAT_CD", length = 64)
-	@Length(min = 0, max = 64)
 	private String law_cat_cd;
 
 	@Column(name = "JURIS_DESC", length = 64)
-	@Length(min = 0, max = 64)
 	private String juris_desc;
 
 	@Column(name = "ADDR_PCT_CD", length = 64)
-	@Length(min = 0, max = 64)
 	private int addr_pct_cd;
 
 	@Column(name = "LOC_OF_OCCUR_DESC", length = 64)
-	@Length(min = 0, max = 64)
+
 	private String loc_of_occur_desc;
 
 	@Column(name = "PREM_TYP_DESC", length = 64)
-	@Length(min = 0, max = 64)
 	private String prem_typ_desc;
 
 	@Column(name = "PARKS_NM", length = 64)
-	@Length(min = 0, max = 64)
 	private String parks_nm;
 
 	@Column(name = "HADEVELOPT", length = 64)
-	@Length(min = 0, max = 64)
 	private String hadevelopt;
 
 	@Column(name = "X_COORD_CD", length = 64)
-	@Length(min = 0, max = 64)
 	private double x_coord_cd;
 
 	@Column(name = "Y_COORD_CD", length = 64)
-	@Length(min = 0, max = 64)
 	private double y_coord_cd;
 
 	@Column(name = "Latitude", length = 64)
-	@Length(min = 0, max = 64)
 	private double latitude;
 
 	@Column(name = "Longitude", length = 64)
-	@Length(min = 0, max = 64)
 	private double longitude;
 
 	public String getCmplnt_num() {
